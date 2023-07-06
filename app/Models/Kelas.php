@@ -10,4 +10,9 @@ class Kelas extends Model
     use HasFactory;
 
     protected $table = 'kelas';
+
+    public function mahasiswarel()
+    {
+        return $this->hasMany(Mahasiswa::class, 'kelas', 'id');
+    }
 }

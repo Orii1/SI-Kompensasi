@@ -14,9 +14,11 @@
     <div class="ol-md-12 sm-12 col-xs-12 mb-2">
         <select class="form-select" name="kelas">
             <option selected disabled>Pilih Kelas</option>
-                <option value="1">2A</option>
-                <option value="2">2B</option>
-                <option value="3">2Axioo</option>
+                @foreach ($kelas as $k)
+                    <option value="{{$k->id}}">
+                        {{$k->nama}}
+                    </option>
+                @endforeach
         </select>
     </div>
 
@@ -39,7 +41,7 @@
                             <td>{{$no++}}</td>
                             <td>{{$m->nama}}</td>
                             <td>{{$m->jenis_kelamin}}</td>
-                            <td>{{$m->kelas}}</td>
+                            <td>{{$m->kelasrel['nama']}}</td>
                             <td>{{$m->email}}</td>
                             <td>
                                 <a href="{{ url('editmahasiswa',$m->id) }}"><i class="fas fa-edit"></i></a>

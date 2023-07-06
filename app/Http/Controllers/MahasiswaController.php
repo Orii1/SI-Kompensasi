@@ -20,11 +20,12 @@ class MahasiswaController extends Controller
         return redirect('addmahasiswa');
     }
 
-    public function show()
+    public function show(Request $request)
     {
-            $mahasiswa = Mahasiswa::all();
-            $kelas = Kelas::all();
-            return view('mahasiswa.datamahasiswa',compact('mahasiswa'));
+
+        $kelas = Kelas::with('mahasiswarel')->get();
+        $mahasiswa = Mahasiswa::with('kelasrel')->get();
+        return view('mahasiswa.datamahasiswa', compact('mahasiswa', 'kelas'));
     }
 
     public function edit($id)
