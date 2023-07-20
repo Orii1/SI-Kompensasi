@@ -16,7 +16,6 @@ class MahasiswaController extends Controller
             'kelas' => $request->kelas,
             'email' => $request->email,
         ]);
-
         return redirect('addmahasiswa');
     }
 

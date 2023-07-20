@@ -18,8 +18,8 @@ class Mahasiswa extends Model
         return $this->belongsTo(Kelas::class, 'kelas', 'id');
     }
 
-    public function kompenrel()
+    public function kompensasi()
     {
-        return $this->belongsTo(Kompensasi::class, 'id_kompensasi', 'id');
+        return $this->hasOne(Kompensasi::class, 'id', 'id_kompensasi');
     }
 }

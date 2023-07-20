@@ -24,6 +24,10 @@
         margin-bottom: 15px;
     }
 
+    .logo{
+        width: 100px;
+    }
+
 </style>
 
 <body>
@@ -34,9 +38,6 @@
             </div>
         @endif
         <div class="login-box">
-            <div>
-                <img src="" alt="">
-            </div>
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <div>

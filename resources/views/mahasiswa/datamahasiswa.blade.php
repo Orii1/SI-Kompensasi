@@ -11,16 +11,47 @@
         </div>
     </div>
 
-    <div class="ol-md-12 sm-12 col-xs-12 mb-2">
-        <select class="form-select" name="kelas">
-            <option selected disabled>Pilih Kelas</option>
-                @foreach ($kelas as $k)
-                    <option value="{{$k->id}}">
-                        {{$k->nama}}
-                    </option>
-                @endforeach
-        </select>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-7 mb-2">
+            <form action="{{ route('search') }}" method="GET" class="row">
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <select class="form-select" name="kelas">
+                        <option selected disabled>Pilih Kelas</option>
+                        @foreach ($kelas as $k)
+                            <option value="{{$k->id}}">
+                                {{$k->nama}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <button class="btn btn-primary bg-dark" type="submit">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
+    {{-- <div class="ol-md-10 sm-12 col-xs-7 mb-2">
+        <div class="col-8">
+            <form action="{{ route('search') }}" method="GET">
+                <select class="form-select" name="kelas">
+                    <option selected disabled>Pilih Kelas</option>
+                        @foreach ($kelas as $k)
+                            <option value="{{$k->id}}">
+                                {{$k->nama}}
+                            </option>
+                        @endforeach
+                </select>
+
+                <div class="col-9">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div> --}}
 
     <div class="card">
         <table class="table caption-top">
@@ -35,21 +66,27 @@
                     </tr>
                 </thead>
 
-                @php($no=1)
-                @foreach ($mahasiswa as $m)
-                    <tbody>
-                            <td>{{$no++}}</td>
-                            <td>{{$m->nama}}</td>
-                            <td>{{$m->jenis_kelamin}}</td>
-                            <td>{{$m->kelasrel['nama']}}</td>
-                            <td>{{$m->email}}</td>
-                            <td>
-                                <a href="{{ url('editmahasiswa',$m->id) }}"><i class="fas fa-edit"></i></a>
-                                |
-                                <a href="{{ url('deletemahasiswa',$m->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
-                            </td>
-                    </tbody>
-                @endforeach
+                @if(isset($results))
+                    @if($results->isEmpty())
+                        <p>No results found.</p>
+                    @else
+                        @php($no=1)
+                        @foreach ($results as $m)
+                            <tbody>
+                                    <td>{{$no++}}</td>
+                                    <td>{{$m->nama}}</td>
+                                    <td>{{$m->jenis_kelamin}}</td>
+                                    <td>{{$m->kelasrel['nama']}}</td>
+                                    <td>{{$m->email}}</td>
+                                    <td>
+                                        <a href="{{ url('editmahasiswa',$m->id) }}"><i class="fas fa-edit"></i></a>
+                                        |
+                                        <a href="{{ url('deletemahasiswa',$m->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
+                                    </td>
+                            </tbody>
+                        @endforeach
+                    @endif
+                @endif
         </table>
     </div>
 </div>

@@ -15,7 +15,7 @@
 
         <div class="col-md-6 sm-12 col-xs-12">
             <div class="card">
-                <div class="card-body">Selamat Datang Muhammad Fariz Anshori</div>
+                <div class="card-body">Selamat Datang Admin</div>
             </div>
         </div>
 

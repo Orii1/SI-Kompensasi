@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\RuanganController;
@@ -38,41 +40,59 @@ Route::get('/dashboard', function () {
 });
 
 
-Route::get('/addmahasiswa', function () {
+Route::get('/admin/addmahasiswa', function () {
     return view('/mahasiswa/addmahasiswa', [
         'kelas' => Kelas::all()
     ]);
 });
-Route::post('addmahasiswa', [MahasiswaController::class, 'store']);
-Route::get('datamahasiswa', [MahasiswaController::class, 'show']);
-Route::get('editmahasiswa/{id}', [MahasiswaController::class, 'edit']);
-Route::put('editmahasiswa/{id}', [MahasiswaController::class, 'update']);
-Route::get('/deletemahasiswa/{id}', [MahasiswaController::class, 'delete']);
+Route::post('/admin/addmahasiswa', [MahasiswaController::class, 'store']);
+Route::get('/admin/datamahasiswa', [MahasiswaController::class, 'show']);
+Route::get('/admin/editmahasiswa/{id}', [MahasiswaController::class, 'edit']);
+Route::put('/admin/editmahasiswa/{id}', [MahasiswaController::class, 'update']);
+Route::get('/admin/deletemahasiswa/{id}', [MahasiswaController::class, 'delete']);
 
 
-Route::get('/addpengawas', function () {
+Route::get('/admin/addpengawas', function () {
     return view('pengawas.addpengawas');
 });
-Route::get('datapengawas', [PengawasController::class, 'show']);
-Route::post('addpengawas', [PengawasController::class, 'store']);
-Route::get('editpengawas/{id}', [PengawasController::class, 'edit']);
-Route::put('/editpengawas/{id}', [PengawasController::class, 'update']);
-Route::get('/deletepengawas/{id}', [PengawasController::class, 'delete']);
+Route::get('/admin/datapengawas', [PengawasController::class, 'show']);
+Route::post('/admin/addpengawas', [PengawasController::class, 'store']);
+Route::get('/admin/editpengawas/{id}', [PengawasController::class, 'edit']);
+Route::put('/admin/editpengawas/{id}', [PengawasController::class, 'update']);
+Route::get('/admin/deletepengawas/{id}', [PengawasController::class, 'delete']);
 
 
-Route::get('/addruangan', function () {
+Route::get('/admin/addruangan', function () {
     return view('ruangan.addruangan');
 });
-Route::post('addruangan',[RuanganController::class, 'store']);
-Route::get('dataruangan', [RuanganController::class, 'show']);
-Route::get('editruangan/{id}', [RuanganController::class, 'edit']);
-Route::put('/editruangan/{id}', [RuanganController::class, 'update']);
-Route::get('/deleteruangan/{id}', [RuanganController::class, 'delete']);
+Route::post('/admin/addruangan',[RuanganController::class, 'store']);
+Route::get('/admin/dataruangan', [RuanganController::class, 'show']);
+Route::get('/admin/editruangan/{id}', [RuanganController::class, 'edit']);
+Route::put('/admin/editruangan/{id}', [RuanganController::class, 'update']);
+Route::get('/admin/deleteruangan/{id}', [RuanganController::class, 'delete']);
 
 
-Route::get('/adduser', function () {
+Route::get('/admin/adduser', function () {
     return view('adduser', [
         'roles' => Role::all()
     ]);
 });
-Route::post('adduser', [UserController::class, 'store']);
+Route::post('/admin/adduser', [UserController::class, 'store']);
+
+Route::get('/admin/search', [KelasController::class, 'index'])->name('search');
+
+
+Route::middleware(['auth', 'user-access:1'])->group(function () {
+
+    Route::get('/mahasiswa/dashboard', [HomeController::class, 'mahasiswadash'])->name('mahasiswadash');
+});
+
+Route::middleware(['auth', 'user-access:3'])->group(function () {
+
+    Route::get('/admin/dashboard', [HomeController::class, 'admindash'])->name('admindash');
+});
+
+Route::middleware(['auth', 'user-access:2'])->group(function () {
+
+    Route::get('/pengawas/dashboard', [HomeController::class, 'pengawasdash'])->name('pengawasdash');
+});

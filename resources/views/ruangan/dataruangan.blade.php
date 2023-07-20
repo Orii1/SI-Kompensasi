@@ -3,13 +3,23 @@
 @section('tittle')
 
 @section('content')
-    <div class="row p-3 g-1">
+<div class="row p-3 g-1">
         <div class="col-md-12 sm-12 col-xs-12 mb-4">
                 <div class="card bg-dark text-white">
                     <div class="card-body">
                         Data Ruangan
                     </div>
                 </div>
+        </div>
+
+
+        <div class="col-md-2 col-sm-2 col-xs-12 mb-2">
+            <a href="{{ url ('addruangan') }}">
+                <button class="btn btn-primary bg-dark" type="submit">
+                    <i class="fa-solid fa-square-plus fa-sm" style="color: #ffffff;"></i>
+                    <label style="size: 5px;">Tambah Ruangan</label>
+                </button>
+            </a>
         </div>
 
         <div class="card">
@@ -38,7 +48,6 @@
             </table>
 
          </div>
-    <a href="{{ url('addruangan') }}"><i class="fa-solid fa-plus"></i></a>
 </div>
 
 @endsection
