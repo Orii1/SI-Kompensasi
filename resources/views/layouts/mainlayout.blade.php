@@ -73,11 +73,11 @@
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Kompensasi</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="datakompensasi">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard"></i></div>
                                 Kompensasi
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="historykompensasi">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 History Kompensasi
                             </a>

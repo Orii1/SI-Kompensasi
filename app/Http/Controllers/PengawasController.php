@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kompensasi;
 use App\Models\Pengawas;
 use Illuminate\Http\Request;
 
 class PengawasController extends Controller
 {
+    public function index()
+    {
+        $kompens = Kompensasi::all();
+        return view('pengawas.dashboard', compact('kompens'));
+    }
+
     public function store(Request $request)
     {
         Pengawas::create($request->all());
@@ -30,13 +37,13 @@ class PengawasController extends Controller
         $data = Pengawas::findOrFail($id);
 
         $data->update($request->all());
-        return redirect('/datapengawas');
+        return redirect('/admin/datapengawas');
     }
 
     public function delete($id)
     {
         $pengawas = Pengawas::findOrFail($id);
         $pengawas->delete();
-        return redirect('/datapengawas');
+        return redirect('/admin/datapengawas');
     }
 }

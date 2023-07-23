@@ -32,26 +32,7 @@
             </form>
         </div>
     </div>
-    {{-- <div class="ol-md-10 sm-12 col-xs-7 mb-2">
-        <div class="col-8">
-            <form action="{{ route('search') }}" method="GET">
-                <select class="form-select" name="kelas">
-                    <option selected disabled>Pilih Kelas</option>
-                        @foreach ($kelas as $k)
-                            <option value="{{$k->id}}">
-                                {{$k->nama}}
-                            </option>
-                        @endforeach
-                </select>
 
-                <div class="col-9">
-                    <button class="btn btn-primary" type="submit">Search</button>
-                </div>
-
-            </form>
-        </div>
-
-    </div> --}}
 
     <div class="card">
         <table class="table caption-top">
@@ -79,9 +60,9 @@
                                     <td>{{$m->kelasrel['nama']}}</td>
                                     <td>{{$m->email}}</td>
                                     <td>
-                                        <a href="{{ url('editmahasiswa',$m->id) }}"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ url('/admin/editmahasiswa',$m->id) }}"><i class="fas fa-edit"></i></a>
                                         |
-                                        <a href="{{ url('deletemahasiswa',$m->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
+                                        <a href="{{ url('/admin/deletemahasiswa',$m->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
                                     </td>
                             </tbody>
                         @endforeach

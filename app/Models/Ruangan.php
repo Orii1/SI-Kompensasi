@@ -11,4 +11,9 @@ class Ruangan extends Model
 
     protected $table = 'ruangan';
     protected $fillable =['nama'];
+
+    public function kompenruang()
+    {
+        return $this->hasOne(Kompensasi::class, 'ruangan', 'id');
+    }
 }

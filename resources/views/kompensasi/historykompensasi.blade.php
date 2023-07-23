@@ -9,18 +9,9 @@
             <div class="card bg-dark text-white">
                 <div class="card-body">
                     <i class="fas fa-tachometer-alt fa-lg"></i>
-                    Data Kompensasi
+                    History Kompensasi
                 </div>
             </div>
-    </div>
-
-    <div class="col-md-2 col-sm-2 col-xs-12 mb-2">
-        <a href="{{ url ('/admin/addkompensasi') }}">
-            <button class="btn btn-primary bg-dark" type="submit">
-                <i class="fa-solid fa-square-plus fa-sm" style="color: #ffffff;"></i>
-                <label style="size: 5px;">Tambah Kompensasi</label>
-            </button>
-        </a>
     </div>
 
     <div class="card">
@@ -32,7 +23,6 @@
                     <th scope="col">Pengawas</th>
                     <th scope="col">Ruangan</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,13 +34,6 @@
                         <td>{{ $item->pengs['nama']}}</td>
                         <td>{{ $item->ruang['nama']}}</td>
                         <td>{{ $item->status }}</td>
-                        <td>
-                            <a href="{{url ('/admin/cekstatus',$item->id)}}"><i class="fa-solid fa-circle-check"></i></a>
-                            |
-                            <a href="   "><i class="fas fa-edit"></i></a>
-                            |
-                            <a href="#"><i class="fas fa-trash" style="color: red"></i></a>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>

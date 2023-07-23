@@ -38,7 +38,7 @@ class MahasiswaController extends Controller
         $data = Mahasiswa::findOrFail($id);
 
         $data->update($request->all());
-        return redirect('/datamahasiswa');
+        return redirect('/admin/datamahasiswa');
     }
 
     public function delete($id)

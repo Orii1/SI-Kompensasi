@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kompensasi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,11 +34,13 @@ class HomeController extends Controller
 
     public function pengawasdash()
     {
-        return view('pengawas.dashboard');
+        $kompens = Kompensasi::all();
+        return view('pengawas.dashboard', compact('kompens'));
     }
 
     public function mahasiswadash()
     {
-        return view('mahasiswa.dashboard');
+        $kompens = Kompensasi::all();
+        return view('mahasiswa.dashboard', compact('kompens'));
     }
 }

@@ -10,9 +10,25 @@ class Kompensasi extends Model
     use HasFactory;
 
     protected $table = 'kompensasi';
+    protected $fillable = ['kelas', 'pengawas', 'ruangan', 'status'];
 
-    public function mhsrel()
+    public function mhs()
     {
-        return $this->hasMany(Mahasiswa::class, 'id_kompensasi', 'id');
+        return $this->hasOne(Mahasiswa::class, 'id_kompensasi', 'id');
+    }
+
+    public function kls()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas', 'id');
+    }
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruangan::class, 'ruangan', 'id');
+    }
+
+    public function pengs()
+    {
+        return $this->belongsTo(Pengawas::class, 'pengawas', 'id');
     }
 }

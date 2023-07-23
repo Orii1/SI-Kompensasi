@@ -17,7 +17,7 @@ class UserController extends Controller
             'role_id' => $request->role_id
         ]);
 
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
 

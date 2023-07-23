@@ -31,9 +31,9 @@
                         <td>{{$p->jenis_kelamin}}</td>
                         <td>{{$p->email}}</td>
                         <td>
-                            <a href="{{ url('editpengawas',$p->id) }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ url('/admin/editpengawas',$p->id) }}"><i class="fas fa-edit"></i></a>
                             |
-                            <a href="{{ url('deletepengawas',$p->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
+                            <a href="{{ url('/admin/deletepengawas',$p->id) }}"><i class="fas fa-trash" style="color: red"></i></a>
                         </td>
                 </tbody>
             @endforeach

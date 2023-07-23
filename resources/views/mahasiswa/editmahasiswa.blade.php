@@ -7,7 +7,7 @@
     <div class="card" style="margin:20px;">
         <div class="card-header">Edit Mahasiswa</div>
         <div class="card-body">
-            <form action="/editmahasiswa/{{$mahasiswa->id}}" method="POST">
+            <form action="/admin/editmahasiswa/{{$mahasiswa->id}}" method="POST">
                 @method("PUT")
                 @csrf
                 <input type="hidden" name="id" id="id" value="{{$mahasiswa->id}}"/>

@@ -14,7 +14,7 @@
 
 
         <div class="col-md-2 col-sm-2 col-xs-12 mb-2">
-            <a href="{{ url ('addruangan') }}">
+            <a href="{{ url ('admin/addruangan') }}">
                 <button class="btn btn-primary bg-dark" type="submit">
                     <i class="fa-solid fa-square-plus fa-sm" style="color: #ffffff;"></i>
                     <label style="size: 5px;">Tambah Ruangan</label>

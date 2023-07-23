@@ -20,11 +20,52 @@
         </div>
     </div>
 
-    <div class="col-md-6 sm-12 col-xs-12">
+    <div class="col-md-6 sm-12 col-xs-12 mb-4">
         <div class="card">
             <div class="card-body">Senin, 04 Juli 2023</div>
         </div>
     </div>
+
+    <div class="col-md-12 sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <b>Kegiatan Kompensasi</b>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table caption-top">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Pengawas</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Ruangan</th>
+                        <th scope="col">Detail</th>
+                    </tr>
+                </thead>
+
+                @php($no=1)
+                @foreach ($kompens as $k)
+                    <tbody>
+
+                            <td>{{$no++}}</td>
+                            <td>{{$k->pengs['nama']}}</td>
+                            <td>{{$k->kls['nama']}}</td>
+                            <td>{{$k->ruang['nama']}}</td>
+                            <td>
+                                <a href=""><i class="fa-solid fa-circle-info"></i></a>
+                            </td>
+                    </tbody>
+                @endforeach
+
+            </table>
+
+        </div>
+    </div>
+
 
 </div>
 

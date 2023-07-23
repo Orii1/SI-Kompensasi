@@ -15,4 +15,9 @@ class Kelas extends Model
     {
         return $this->hasMany(Mahasiswa::class, 'kelas', 'id');
     }
+
+    public function kompen()
+    {
+        return $this->hasOne(Kompensasi::class, 'kelas', 'id');
+    }
 }

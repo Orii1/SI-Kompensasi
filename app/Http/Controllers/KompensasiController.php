@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
+use App\Models\Kompensasi;
+use App\Models\Pengawas;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
 class KompensasiController extends Controller
@@ -13,7 +17,8 @@ class KompensasiController extends Controller
      */
     public function index()
     {
-        //
+        $kompens = Kompensasi::with('kls', 'ruang', 'pengs')->get();
+        return view('kompensasi.datakompensasi', compact('kompens'));
     }
 
     /**
@@ -23,7 +28,11 @@ class KompensasiController extends Controller
      */
     public function create()
     {
-        //
+        $kelas = Kelas::all();
+        $ruangan = Ruangan::all();
+        $pengawas = Pengawas::all();
+
+        return view('kompensasi.addkompensasi', compact('kelas', 'ruangan', 'pengawas'));
     }
 
     /**
@@ -34,7 +43,13 @@ class KompensasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kompensasi::create([
+            'kelas' => $request->kelas,
+            'pengawas' => $request->pengawas,
+            'ruangan' => $request->ruangan,
+        ]);
+
+        return redirect('/admin/datakompensasi');
     }
 
     /**
@@ -80,5 +95,25 @@ class KompensasiController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function history()
+    {
+        $kompens = Kompensasi::all();
+        return view('kompensasi.historykompensasi', compact('kompens'));
+    }
+
+    public function status($id)
+    {
+        $kompens = Kompensasi::find($id);
+        return view('kompensasi.cekstatus')->with('kompens', $kompens);
+    }
+
+    public function acc(Request $request, $id)
+    {
+        $data = Kompensasi::findOrFail($id);
+
+        $data->update($request->all());
+        return redirect('/admin/datakompensasi');
     }
 }

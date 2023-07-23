@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\KompensasiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\RuanganController;
@@ -10,6 +11,7 @@ use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\Role;
 use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -96,3 +98,12 @@ Route::middleware(['auth', 'user-access:2'])->group(function () {
 
     Route::get('/pengawas/dashboard', [HomeController::class, 'pengawasdash'])->name('pengawasdash');
 });
+
+
+Route::get('/admin/datakompensasi', [KompensasiController::class, 'index']);
+Route::get('/admin/addkompensasi', [KompensasiController::class, 'create']);
+Route::post('/admin/addkompensasi', [KompensasiController::class, 'store']);
+Route::get('/admin/cekstatus/{id}', [KompensasiController::class, 'status']);
+Route::put('/admin/cekstatus/{id}', [KompensasiController::class, 'acc']);
+
+Route::get('/admin/historykompensasi', [KompensasiController::class, 'history']);
