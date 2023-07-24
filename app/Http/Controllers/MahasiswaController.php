@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Kompensasi;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,13 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::findOrFail($id);
         $mahasiswa->delete();
         return redirect('/datamahasiswa');
+    }
+
+    public function submit($id)
+    {
+        $mahasiswa = Mahasiswa::all();
+        $kompensasi = Kompensasi::findOrFail($id);
+        return view('mahasiswa.submitmhs', compact('mahasiswa', 'kompensasi'));
     }
 
 }

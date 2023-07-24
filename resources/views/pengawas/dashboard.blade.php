@@ -1,4 +1,4 @@
-@extends('layouts.mahasiswalay')
+@extends('layouts.pengawaslay')
 
 @section('tittle')
 

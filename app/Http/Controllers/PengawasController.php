@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kompensasi;
 use App\Models\Pengawas;
+use App\Models\Submit;
 use Illuminate\Http\Request;
 
 class PengawasController extends Controller
@@ -45,5 +46,19 @@ class PengawasController extends Controller
         $pengawas = Pengawas::findOrFail($id);
         $pengawas->delete();
         return redirect('/admin/datapengawas');
+    }
+
+    public function status($id)
+    {
+        $kompens = Submit::find($id);
+        return view('pengawas.statuskompens')->with('kompens', $kompens);
+    }
+
+    public function setstatus(Request $request, $id)
+    {
+        $data = Submit::findOrFail($id);
+
+        $data->update($request->all());
+        return redirect('/pengawas/kompensasimhs');
     }
 }

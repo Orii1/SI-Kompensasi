@@ -42,6 +42,10 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            <a class="nav-link" href="/pengawas/kompensasimhs">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-clipboard"></i></div>
+                                Kompensasi Mahasiswa
+                            </a>
                         </div>
                     </div>
                 </nav>

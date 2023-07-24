@@ -10,6 +10,7 @@ class Submit extends Model
     use HasFactory;
 
     protected $table = 'submit';
+    protected $fillable = ['id_mahasiswa', 'id_kompensasi', 'foto', 'status_kalab', 'status_pengawas', 'status_kaprodi'];
 
     public function mahasiswa()
     {

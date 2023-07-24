@@ -10,7 +10,7 @@ class Kompensasi extends Model
     use HasFactory;
 
     protected $table = 'kompensasi';
-    protected $fillable = ['kelas', 'pengawas', 'ruangan', 'status'];
+    protected $fillable = ['kelas', 'pengawas', 'ruangan', 'status', 'foto'];
 
     public function mhs()
     {

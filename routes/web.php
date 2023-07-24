@@ -6,6 +6,7 @@ use App\Http\Controllers\KompensasiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\SubmitController;
 use App\Http\Controllers\UserController;
 use App\Models\Kelas;
 use App\Models\Kompensasi;
@@ -111,5 +112,11 @@ Route::put('/admin/editkompensasi/{id}', [KompensasiController::class, 'update']
 
 Route::get('/pengawas/detailpeng/{id}', [KompensasiController::class, 'showpeng']);
 
-
 Route::get('/admin/historykompensasi', [KompensasiController::class, 'history']);
+
+Route::get('/mahasiswa/submitmhs/{id}', [MahasiswaController::class, 'submit']);
+Route::post('/mahasiswa/submitmhs/{id}', [SubmitController::class, 'store']);
+
+Route::get('/pengawas/kompensasimhs', [SubmitController::class, 'index']);
+Route::get('/pengawas/statuskompens/{id}', [PengawasController::class, 'status']);
+Route::put('/pengawas/statuskompens/{id}', [PengawasController::class, 'setstatus']);

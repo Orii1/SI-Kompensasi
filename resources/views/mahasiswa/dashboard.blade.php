@@ -57,7 +57,7 @@
                             <td>{{$k->pengs['nama']}}</td>
                             <td>{{$k->ruang['nama']}}</td>
                             <td>
-                                <a href="{{ url ('mahasiswa/submit',$k->id) }}">
+                                <a href="{{ url ('mahasiswa/submitmhs',$k->id) }}">
                                     <button class="btn btn-primary bg-dark" type="submit">
                                         <label style="size: 5px;">Submit</label>
                                     </button>
