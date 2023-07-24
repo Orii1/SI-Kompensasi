@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KompensasiController;
@@ -120,3 +121,7 @@ Route::post('/mahasiswa/submitmhs/{id}', [SubmitController::class, 'store']);
 Route::get('/pengawas/kompensasimhs', [SubmitController::class, 'index']);
 Route::get('/pengawas/statuskompens/{id}', [PengawasController::class, 'status']);
 Route::put('/pengawas/statuskompens/{id}', [PengawasController::class, 'setstatus']);
+
+Route::get('/admin/kompenmhs', [AdminController::class, 'index']);
+Route::get('/admin/statuskompen/{id}', [AdminController::class, 'status']);
+Route::put('/admin/statuskompen/{id}', [AdminController::class, 'setstatus']);

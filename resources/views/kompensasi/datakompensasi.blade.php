@@ -13,15 +13,31 @@
                 </div>
             </div>
     </div>
-
-    <div class="col-md-2 col-sm-2 col-xs-12 mb-2">
-        <a href="{{ url ('/admin/addkompensasi') }}">
-            <button class="btn btn-primary bg-dark" type="submit">
-                <i class="fa-solid fa-square-plus fa-sm" style="color: #ffffff;"></i>
-                <label style="size: 5px;">Tambah Kompensasi</label>
-            </button>
-        </a>
+    <div class="row">
+        <div class="col-md-10 col-sm-12 col-xs-12 mb-2">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6 mb-2">
+                    <a href="{{ url('/admin/addkompensasi') }}">
+                        <button class="btn btn-primary bg-dark" type="submit">
+                            <i class="fa-solid fa-square-plus fa-sm" style="color: #ffffff;"></i>
+                            Tambah Kompensasi
+                        </button>
+                    </a>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <a href="{{ url('/admin/kompenmhs') }}">
+                        <button class="btn btn-primary bg-dark" type="submit">
+                            <i class="fa-solid fa-user fa-sm" style="color: #ffffff;"></i>
+                            Kompensasi Mahasiswa
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
 
     <div class="card">
         <table class="table caption-top">
