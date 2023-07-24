@@ -30,7 +30,7 @@ class RuanganController extends Controller
         $data = Ruangan::findOrFail($id);
 
         $data->update($request->all());
-        return redirect('/dataruangan');
+        return redirect('admin/dataruangan');
     }
 
     public function delete($id)

@@ -71,38 +71,22 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Kelas</th>
+                                <th scope="col">Pengawas</th>
                                 <th scope="col">Ruangan</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
 
                         @php($no=1)
+                        @foreach ($status as $item )
                             <tbody>
-                                <tr>
-                                    <td>{{$no++}}</td>
-                                    <td>2A</td>
-                                    <td>Lab Axioo</td>
-                                    <td>Ongoing</td>
-                                </tr>
-                                <tr>
-                                    <td>{{$no++}}</td>
-                                    <td>2B</td>
-                                    <td>Lab ARVR</td>
-                                    <td>Ongoing</td>
-                                </tr>
-                                <tr>
-                                    <td>{{$no++}}</td>
-                                    <td>2B</td>
-                                    <td>Lab KCV</td>
-                                    <td>Ongoing</td>
-                                </tr>
-                                <tr>
-                                    <td>{{$no++}}</td>
-                                    <td>2Axioo</td>
-                                    <td>Lab RPL</td>
-                                    <td>Ongoing</td>
-                                </tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $item->kls['nama'] }}</td>
+                                <td>{{ $item->pengs['nama']}}</td>
+                                <td>{{ $item->ruang['nama']}}</td>
+                                <td>{{ $item->status }}</td>
                             </tbody>
+                        @endforeach
                 </table>
             </div>
         </div>

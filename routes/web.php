@@ -8,6 +8,7 @@ use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\UserController;
 use App\Models\Kelas;
+use App\Models\Kompensasi;
 use App\Models\Mahasiswa;
 use App\Models\Role;
 use Illuminate\Routing\Route as RoutingRoute;
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login2');
-});
+})->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('/admin/dashboard');
@@ -105,5 +106,10 @@ Route::get('/admin/addkompensasi', [KompensasiController::class, 'create']);
 Route::post('/admin/addkompensasi', [KompensasiController::class, 'store']);
 Route::get('/admin/cekstatus/{id}', [KompensasiController::class, 'status']);
 Route::put('/admin/cekstatus/{id}', [KompensasiController::class, 'acc']);
+Route::get('/admin/editkompensasi/{id}', [KompensasiController::class, 'edit']);
+Route::put('/admin/editkompensasi/{id}', [KompensasiController::class, 'update']);
+
+Route::get('/pengawas/detailpeng/{id}', [KompensasiController::class, 'showpeng']);
+
 
 Route::get('/admin/historykompensasi', [KompensasiController::class, 'history']);

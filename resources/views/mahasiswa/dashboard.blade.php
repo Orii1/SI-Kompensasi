@@ -49,7 +49,7 @@
                 </thead>
 
                 @php($no=1)
-                @foreach ($kompens as $k)
+                @foreach ($status as $k)
                     <tbody>
 
                             <td>{{$no++}}</td>
@@ -57,7 +57,11 @@
                             <td>{{$k->pengs['nama']}}</td>
                             <td>{{$k->ruang['nama']}}</td>
                             <td>
-                                <a href="#"><i class="fa-solid fa-circle-info"></i></a>
+                                <a href="{{ url ('mahasiswa/submit',$k->id) }}">
+                                    <button class="btn btn-primary bg-dark" type="submit">
+                                        <label style="size: 5px;">Submit</label>
+                                    </button>
+                                </a>
                             </td>
                     </tbody>
                 @endforeach

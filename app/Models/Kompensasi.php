@@ -14,7 +14,7 @@ class Kompensasi extends Model
 
     public function mhs()
     {
-        return $this->hasOne(Mahasiswa::class, 'id_kompensasi', 'id');
+        return $this->belongsTo(Mahasiswa::class, 'id_kompensasi', 'id');
     }
 
     public function kls()

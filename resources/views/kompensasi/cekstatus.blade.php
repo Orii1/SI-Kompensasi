@@ -24,8 +24,12 @@
                 @method("PUT")
                 @csrf
                 <div class="col-5">
-                    <label for="status" class="form-label">Status</label>
-                    <input type="text" name="status" id="status" class="form-control" required>
+                    <select class="form-select" name="status">
+                        <option selected disabled>Status</option>
+                                <option value="Complete">
+                                    Complete
+                                </option>
+                    </select>
                 </div>
 
                 <div class="col-1">

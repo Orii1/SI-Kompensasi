@@ -10,8 +10,8 @@ class PengawasController extends Controller
 {
     public function index()
     {
-        $kompens = Kompensasi::all();
-        return view('pengawas.dashboard', compact('kompens'));
+        $status = Kompensasi::where('status', ('Ongoing'))->with('kls', 'ruang', 'pengs')->get();
+        return view('pengawas.dashboard', compact('status'));
     }
 
     public function store(Request $request)

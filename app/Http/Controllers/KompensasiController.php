@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Kompensasi;
+use App\Models\Mahasiswa;
 use App\Models\Pengawas;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
@@ -17,8 +18,8 @@ class KompensasiController extends Controller
      */
     public function index()
     {
-        $kompens = Kompensasi::with('kls', 'ruang', 'pengs')->get();
-        return view('kompensasi.datakompensasi', compact('kompens'));
+        $status = Kompensasi::where('status', ('Ongoing'))->with('kls', 'ruang', 'pengs')->get();
+        return view('kompensasi.datakompensasi', compact('status'));
     }
 
     /**
@@ -58,9 +59,21 @@ class KompensasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showpeng($id)
     {
-        //
+        $kompensasi = Kompensasi::find($id);
+        $mhskls = Mahasiswa::all();
+        $datamhs = null;
+        if ($kompensasi->kelas == $mhskls->kelasrel->nama) {
+            $datamhs = Mahasiswa::where('kelas', $kompensasi->kelas == $mhskls->kelas);
+        }
+        return view('pengawas.detail', compact('kompensasi'));
+    }
+
+    public function showmhs($id)
+    {
+        $kompensasi = Kompensasi::findOrFail($id)->with('kls', 'ruang', 'pengs')->get();
+        return view('mahasiswa.detail', ['kompensasi' => $kompensasi]);
     }
 
     /**
@@ -71,7 +84,11 @@ class KompensasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kompensasi = Kompensasi::find($id);
+        $kelas = Kelas::all();
+        $pengawas = Pengawas::all();
+        $ruangan = Ruangan::all();
+        return view('kompensasi.editkompensasi', compact('kompensasi', 'kelas', 'ruangan', 'pengawas'));
     }
 
     /**
@@ -83,7 +100,10 @@ class KompensasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Kompensasi::findOrFail($id);
+
+        $data->update($request->all());
+        return redirect('/admin/datakompensasi');
     }
 
     /**

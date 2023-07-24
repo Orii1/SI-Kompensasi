@@ -37,7 +37,7 @@
             </thead>
             <tbody>
                 @php($no=1)
-                @foreach ($kompens as $item)
+                @foreach ($status as $item)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $item->kls['nama'] }}</td>
@@ -47,7 +47,7 @@
                         <td>
                             <a href="{{url ('/admin/cekstatus',$item->id)}}"><i class="fa-solid fa-circle-check"></i></a>
                             |
-                            <a href="   "><i class="fas fa-edit"></i></a>
+                            <a href="{{url ('/admin/editkompensasi',$item->id)}}"><i class="fas fa-edit"></i></a>
                             |
                             <a href="#"><i class="fas fa-trash" style="color: red"></i></a>
                         </td>

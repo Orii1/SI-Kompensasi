@@ -43,20 +43,24 @@
                         <th scope="col">Pengawas</th>
                         <th scope="col">Kelas</th>
                         <th scope="col">Ruangan</th>
-                        <th scope="col">Detail</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Surat</th>
                     </tr>
                 </thead>
 
                 @php($no=1)
-                @foreach ($kompens as $k)
+                @foreach ($status as $k)
                     <tbody>
 
                             <td>{{$no++}}</td>
                             <td>{{$k->pengs['nama']}}</td>
                             <td>{{$k->kls['nama']}}</td>
                             <td>{{$k->ruang['nama']}}</td>
+                            <td>{{$k->status}}</td>
                             <td>
-                                <a href=""><i class="fa-solid fa-circle-info"></i></a>
+                                <div class="col-6">
+                                    <button type="submit" class="btn btn-primary form-control bg-dark">Surat Tugas</button>
+                                </div>
                             </td>
                     </tbody>
                 @endforeach

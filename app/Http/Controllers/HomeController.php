@@ -29,18 +29,19 @@ class HomeController extends Controller
 
     public function admindash()
     {
-        return view('admin.dashboard');
+        $status = Kompensasi::where('status', ('Ongoing'))->with('kls', 'ruang', 'pengs')->get();
+        return view('admin.dashboard', compact('status'));
     }
 
     public function pengawasdash()
     {
-        $kompens = Kompensasi::all();
-        return view('pengawas.dashboard', compact('kompens'));
+        $status = Kompensasi::where('status', ('Ongoing'))->with('kls', 'ruang', 'pengs')->get();
+        return view('pengawas.dashboard', compact('status'));
     }
 
     public function mahasiswadash()
     {
-        $kompens = Kompensasi::all();
-        return view('mahasiswa.dashboard', compact('kompens'));
+        $status = Kompensasi::where('status', ('Ongoing'))->with('kls', 'ruang', 'pengs')->get();
+        return view('mahasiswa.dashboard', compact('status'));
     }
 }

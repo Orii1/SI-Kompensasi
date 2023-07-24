@@ -39,9 +39,9 @@
                             <td>{{$no++}}</td>
                             <td>{{$r->nama}}</td>
                             <td>
-                                <a href="{{ url('editruangan',$r->id) }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ url('/admin/editruangan',$r->id) }}"><i class="fas fa-edit"></i></a>
                                 |
-                                <a href="{{ url('deleteruangan',$r->id)}}"><i class="fas fa-trash" style="color: red"></i></a>
+                                <a href="{{ url('/admin/deleteruangan',$r->id)}}"><i class="fas fa-trash" style="color: red"></i></a>
                             </td>
                     </tbody>
                 @endforeach
