@@ -57,11 +57,6 @@
                             <td>{{$k->kls['nama']}}</td>
                             <td>{{$k->ruang['nama']}}</td>
                             <td>{{$k->status}}</td>
-                            <td>
-                                <div class="col-6">
-                                    <button type="submit" class="btn btn-primary form-control bg-dark">Surat Tugas</button>
-                                </div>
-                            </td>
                     </tbody>
                 @endforeach
 
